@@ -22,8 +22,11 @@ const showroomLocations = [
 const stepSchemas = [
   z.object({}), // Step 1: No validation
   z.object({
-    showroom: z.string().min(1, "Please select a showroom"),
-    date: z.string().min(1, "Please select a date"),
+    showroom: z.preprocess(
+        value => (value === null ? "" : value), // Convert null to an empty string
+        z.string().min(1, "Please select a showroom")
+      ),
+          date: z.string().min(1, "Please select a date"),
     salesExecNumber: z.string().min(1, "Enter Sales Executive E-Number"),
     salesExecName: z.string().min(1, "Enter Sales Executive Name"),
   }),
@@ -112,7 +115,7 @@ const MultiStepForm = () => {
                   <input
                     type="radio"
                     value={location}
-                    {...register("showroom")}
+                    {...register("showroom", { required: "Please select a showroom" })}
                     className="w-4 h-4"
                   />
                   <span>{location}</span>
