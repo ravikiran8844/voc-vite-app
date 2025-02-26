@@ -77,18 +77,18 @@ const MultiStepForm = () => {
   }
 
   return (
-    <div className="min-h-screen max-w-4xl mx-auto shadow-md">
+    <div className="min-h-screen max-w-3xl mx-auto shadow-md">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {step === 1 && (
           <div>
             <div>
               <img src="/banner.webp" />
             </div>
-            <div className="text-center bg-[#964A26] p-8">
+            <div>
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="text-white uppercase font-semibold text-xl cursor-pointer"
+                className="text-white uppercase font-semibold text-xl cursor-pointer text-center bg-[#964A26] p-8  w-full"
               >
                 Enter your Feedback
               </button>
